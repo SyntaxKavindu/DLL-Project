@@ -1,9 +1,12 @@
-# Math DLL Project & Client Application
+# 📘 Math DLL Project & Client Application
 
-A simple example demonstrating how to create a DLL for math operations and a client app that uses it via implicit linking.
+A simple example demonstrating how to create a DLL for math operations and a client application that uses it via implicit linking.
+
+---
 
 ## 📂 Repository Structure
 
+```
 math-dll-project/  
 ├── math_operations/          # DLL Project  
 │   ├── include/              # Public headers  
@@ -20,36 +23,53 @@ math-dll-project/
 │  
 ├── CMakeLists.txt            # Build configuration  
 └── README.md                 # This file  
+```
+
+---
 
 ## 🔧 Prerequisites
+
 - Visual Studio 2022 (or GCC/MinGW)
 - CMake (>= 3.20)
 - Git
 
+---
+
 ## 🚀 Build Instructions
 
 ### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/yourusername/math-dll-project.git
 cd math-dll-project
+```
 
-2. Build the Math DLL
+### 2. Build the Math DLL
 
+```bash
 mkdir build && cd build
-cmake .. -A x64  # For 64-bit (use `-A Win32` for 32-bit)
+cmake .. -A x64  # Use `-A Win32` for 32-bit
 cmake --build . --config Release
+```
 
-3. Build the Client App
+### 3. Build the Client App
 
-cd client_app
+```bash
+cd ../client_app
 mkdir build && cd build
 cmake .. -A x64
 cmake --build . --config Release
+```
 
-📚 Code Documentation
-Math DLL (math_operations)
-math_operations.h
+---
 
+## 📚 Code Documentation
+
+### Math DLL: `math_operations`
+
+#### `math_operations.h`
+
+```cpp
 #pragma once
 
 #ifdef MATH_OPERATIONS_EXPORTS
@@ -62,19 +82,24 @@ extern "C" MATH_API int add(int a, int b);
 extern "C" MATH_API int subtract(int a, int b);
 extern "C" MATH_API double multiply(double a, double b);
 extern "C" MATH_API double divide(double a, double b);
+```
 
-math_operations.cpp
+#### `math_operations.cpp`
 
+```cpp
 #include "math_operations.h"
 
 int add(int a, int b) { return a + b; }
 int subtract(int a, int b) { return a - b; }
 double multiply(double a, double b) { return a * b; }
 double divide(double a, double b) { return (b != 0) ? a / b : 0.0; }
+```
 
-Client Application
-main.cpp
+---
 
+### Client Application: `main.cpp`
+
+```cpp
 #include <iostream>
 #include "../../math_operations/include/math_operations.h"
 
@@ -85,21 +110,34 @@ int main() {
     std::cout << "5.0 / 3.0 = " << divide(5.0, 3.0) << std::endl;
     return 0;
 }
+```
 
-⚙️ How It Works
-The DLL exports math functions
+---
 
-Client app links to the DLL implicitly
+## ⚙️ How It Works
 
-DLL loads automatically at runtime
+- The DLL exports basic math functions.
+- The client application links to the DLL implicitly.
+- The DLL is automatically loaded at runtime.
 
-📦 Distribution
-For developers: include/ + lib/
+---
 
-For end users: Just the .dll file
+## 📦 Distribution
 
-🔍 Troubleshooting
-Error	Solution
-DLL not found	Copy DLL to client's executable folder
-Linker errors	Check library paths and dependencies
-📜 License: MIT
+- **For developers:** Include header files and `.lib` files.
+- **For end users:** Distribute only the `.dll` file.
+
+---
+
+## 🔍 Troubleshooting
+
+| Error           | Solution                                   |
+|----------------|--------------------------------------------|
+| DLL not found   | Copy the DLL to the client's executable folder |
+| Linker errors   | Check library paths and dependencies       |
+
+---
+
+## 📜 License
+
+**MIT**
