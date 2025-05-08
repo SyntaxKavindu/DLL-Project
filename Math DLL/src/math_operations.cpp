@@ -27,8 +27,16 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 	switch (ul_reason_for_call)
 	{
 	case DLL_PROCESS_ATTACH:
+
+		// Show a message box when the DLL is loaded
+		MessageBox(NULL, TEXT("Math DLL Loaded"), TEXT("DLL Notification"), MB_OK | MB_ICONINFORMATION);
+
+		break;
+
 	case DLL_THREAD_ATTACH:
+		break;
 	case DLL_THREAD_DETACH:
+		break;
 	case DLL_PROCESS_DETACH:
 		break;
 	}

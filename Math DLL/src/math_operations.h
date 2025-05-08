@@ -1,6 +1,8 @@
 // math_operations.h - Declares the functions the DLL will expose
 #pragma once  
 
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <windows.h>  // For Windows-specific types and functions
 
 // Ensure functions are exported when building the DLL, imported when using it
